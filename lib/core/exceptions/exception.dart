@@ -1,0 +1,1 @@
+class ClubNotFoundException implements Exception {}
