@@ -7,8 +7,8 @@ import 'package:three_x_ball/repository/app_repository.dart';
 
 class CheckScreen extends StatelessWidget {
   const CheckScreen({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +20,8 @@ class CheckScreen extends StatelessWidget {
 
 class CheckBlocWidget extends StatelessWidget {
   const CheckBlocWidget({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {

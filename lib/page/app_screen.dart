@@ -4,7 +4,7 @@ import 'package:three_x_ball/core/theme/app_themes.dart';
 import '../route_generator.dart';
 
 class AppScreen extends StatelessWidget {
-  const AppScreen({Key? key}) : super(key: key);
+  const AppScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

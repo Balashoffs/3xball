@@ -50,6 +50,7 @@ void main() {
         Widget? child,
       ) {
         late final Widget child;
+        print(snapshot.connectionState);
         switch (snapshot.connectionState) {
           case ConnectionState.none:
           case ConnectionState.active:
