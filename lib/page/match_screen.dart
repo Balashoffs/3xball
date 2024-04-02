@@ -50,12 +50,6 @@ class MatchBuilderWidget extends StatelessWidget {
               .then((value) => Navigator.of(context).pop());
         }
         if (state.status == MatchStatus.finish) {
-          final player = AudioPlayer();
-          player.stop();
-          Vibration.vibrate(duration: 3000);
-          player.setLoopMode(LoopMode.off);
-          player.setAsset('assets/match/whistle.wav');
-          player.play();
           context.read<MatchCubit>().onClosed();
         }
       },

@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:three_x_ball/mapper/player_mapper.dart';
 import 'package:three_x_ball/model/domain/domain.dart';
@@ -54,6 +55,7 @@ class BetweenMatchCubit extends Cubit<BetweenMatchState> {
         .toList();
     String matchResult = await SharedPreferences.getInstance()
         .then((value) => value.getString('match_result') ?? '');
+    _playWhistle();
     if (matchPlayers.isNotEmpty) {
       emit(
         BetweenMatchState(
@@ -76,5 +78,13 @@ class BetweenMatchCubit extends Cubit<BetweenMatchState> {
         ),
       );
     }
+  }
+
+  void _playWhistle(){
+    final player = AudioPlayer();
+    player.stop();
+    player.setLoopMode(LoopMode.off);
+    player.setAsset('assets/match/whistle.wav');
+    player.play();
   }
 }

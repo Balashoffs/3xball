@@ -6,7 +6,6 @@ import 'package:just_audio/just_audio.dart';
 import 'package:three_x_ball/core/utils/colors.dart';
 import 'package:three_x_ball/core/utils/styles.dart';
 import 'package:three_x_ball/features/match/bloc/bloc.dart';
-import 'package:vibration/vibration.dart';
 
 class MatchControllerWidget extends StatefulWidget {
   const MatchControllerWidget({super.key});
