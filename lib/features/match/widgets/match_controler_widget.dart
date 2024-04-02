@@ -37,22 +37,22 @@ class _MatchControllerWidgetState extends State<MatchControllerWidget> {
         ),
       );
     }
-    return Center(
-      child: Stack(alignment: Alignment.center, children: [
-        Image.asset('assets/match/back.png'),
-        GestureDetector(
+    return Stack( alignment: Alignment.center, children: [
+      // Image.asset('assets/match/back.png'),
+      Image.asset(
+        'assets/match/play_button_back.png',
+
+      ),
+      Center(
+        child: GestureDetector(
           onTap: () {
             final bloc = context.read<TimerCubit>();
             if (bloc.state.status == TimerStatus.idle) {
-              player.setAsset('assets/match/timer_beat.wav');
-              player.setLoopMode(LoopMode.one);
-              player.play();
               bloc.start();
             } else {
               context.read<MatchCubit>().onPaused(isPause);
               isPause ? bloc.paused() : bloc.resumed();
             }
-            isPause ? player.pause() : player.play();
             isPause = !isPause;
             setState(() {});
           },
@@ -64,8 +64,8 @@ class _MatchControllerWidgetState extends State<MatchControllerWidget> {
                   'assets/match/play_button.png',
                 ),
         ),
-      ]),
-    );
+      ),
+    ], );
   }
 
   @override

@@ -2,19 +2,18 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:three_x_ball/core/service/sound_manager.dart';
 
 part 'timer_state.dart';
 
 class TimerCubit extends Cubit<TimerState> {
-
-  static const int beforeEnd = 5;
-  static const int afterEnd = 2;
-  // static const int timer = 5 * 60 + afterEnd;
-  static const int timer = 1 * 30 + afterEnd;
+  static const int secondToEndMatch = 30;
+  static const int totalSecondsPerMatch = 1 * 30;
 
   TimerCubit()
       : _ticker = const Ticker(),
-        super(const TimerState(duration: timer)) {
+        _tickerPlayer = TickerPlayer(),
+        super(const TimerState(duration: totalSecondsPerMatch)) {
     emit(
       state.copyWith(status: TimerStatus.idle),
     );
@@ -22,6 +21,7 @@ class TimerCubit extends Cubit<TimerState> {
 
   StreamSubscription<int>? _tickerSubscription;
   final Ticker _ticker;
+  final TickerPlayer _tickerPlayer;
 
   void start() {
     _tickerSubscription?.cancel();
@@ -31,6 +31,7 @@ class TimerCubit extends Cubit<TimerState> {
         )
         .listen(_onTick);
     emit(state.copyWith(status: TimerStatus.inProgress));
+    _tickerPlayer.play();
   }
 
   void paused() {
@@ -56,14 +57,10 @@ class TimerCubit extends Cubit<TimerState> {
     );
   }
 
-  void end(){
-    _onTick(afterEnd);
-  }
-
   void _onTick(int duration) {
     if (duration > 0) {
       emit(state.copyWith(status: TimerStatus.inProgress, duration: duration));
-    } else{
+    } else {
       emit(state.copyWith(status: TimerStatus.complete, duration: duration));
     }
   }
@@ -71,6 +68,7 @@ class TimerCubit extends Cubit<TimerState> {
   @override
   Future<void> close() {
     _tickerSubscription?.cancel();
+    _tickerPlayer.stop();
     return super.close();
   }
 }

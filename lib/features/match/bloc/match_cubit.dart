@@ -61,7 +61,7 @@ class MatchCubit extends Cubit<MatchState> {
     MatchStatus status = matchScore
         .where((element) => element == 2)
         .isNotEmpty
-        ? MatchStatus.finish
+        ? MatchStatus.end
         : MatchStatus.idle;
 
     emit(
@@ -71,7 +71,7 @@ class MatchCubit extends Cubit<MatchState> {
 
   void onFinish() async {
     emit(state.copyWith(
-      status: MatchStatus.finish,
+      status: MatchStatus.cancel,
     ));
   }
 
@@ -89,7 +89,7 @@ class MatchCubit extends Cubit<MatchState> {
     _matchRepository.addGoalAuthor(null);
     emit(
       state.copyWith(
-        status: MatchStatus.cancel,
+        status: MatchStatus.end,
         playerPos: -1,
       ),
     );

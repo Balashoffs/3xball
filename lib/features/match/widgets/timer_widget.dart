@@ -20,18 +20,11 @@ class MatchTimerWidget extends StatelessWidget {
     return BlocBuilder<TimerCubit, TimerState>(
       builder: (context, state) {
         int duration = state.duration;
-        if (duration > TimerCubit.afterEnd) {
-          if (duration == TimerCubit.afterEnd + TimerCubit.beforeEnd) {
-            Vibration.vibrate(
-                duration:
-                (TimerCubit.beforeEnd * 1000 + 1000));
-          }
-          duration = duration - TimerCubit.afterEnd;
-        }else{
-          if(duration == TimerCubit.afterEnd ){
-            context.read<MatchCubit>().onFinish();
-          }
-          duration = 0;
+        if (duration == TimerCubit.secondToEndMatch) {
+          print('turn on vibrate');
+          Vibration.vibrate(
+              duration:
+              (3000));
         }
 
         String timer = toStringTimer(duration);
