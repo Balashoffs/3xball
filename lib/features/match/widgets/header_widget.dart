@@ -5,7 +5,6 @@ import 'package:three_x_ball/core/theme/app_typography.dart';
 import 'package:three_x_ball/core/utils/utils.dart';
 import 'package:three_x_ball/features/match/bloc/bloc.dart';
 
-
 class MatchHeaderWidget extends StatelessWidget {
   const MatchHeaderWidget({super.key});
 
@@ -32,11 +31,15 @@ class MatchIndexWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    int matchItem = context.select((MatchCubit cubit) => cubit.state.matchItem);
-    return Text(
-      'Матч #$matchItem',
-      style: AT.t.title3.theme,
-    );
+    MatchStatus matchStatus = context.select((MatchCubit cubit) => cubit.state.status);
+    if(matchStatus != MatchStatus.selecting){
+      int matchItem = context.select((MatchCubit cubit) => cubit.state.matchItem);
+      return Text(
+        'Матч #$matchItem',
+        style: AT.t.title3.theme,
+      );
+    }
+    return SizedBox.shrink();
   }
 }
 
@@ -48,6 +51,12 @@ class MatchResultWidget extends StatelessWidget {
     final cubit = context.watch<MatchCubit>();
     final score = cubit.state.matchScore;
     if (score.isEmpty) return const SizedBox.shrink();
+    if (cubit.state.status == MatchStatus.selecting) {
+      return Text(
+        'Выберите автора гола',
+        style: textStyleBold(Colors.white, 30.0),
+      );
+    }
     return Text(
       '${cubit.state.matchScore[0]} : ${cubit.state.matchScore[1]}',
       style: textStyleBold(Colors.white, 30.0),
@@ -61,7 +70,7 @@ class MenuButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final status = context.select((MatchCubit cubit) => cubit.state.status);
-    if (status == MatchStatus.selecting || status == MatchStatus.selected) {
+    if (status == MatchStatus.selected) {
       return IconButton(
         onPressed: () {
           context.read<MatchCubit>().onCancel();
@@ -72,6 +81,9 @@ class MenuButtonWidget extends StatelessWidget {
           size: 24,
         ),
       );
+    }
+    if(status == MatchStatus.selecting){
+      return SizedBox.shrink();
     }
     return IconButton(
         onPressed: () {},

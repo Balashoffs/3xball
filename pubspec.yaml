@@ -52,7 +52,7 @@ dependencies:
   vibration: ^1.8.4
   auto_size_text: ^3.0.0
   rf_core:
-    git: https://gitlab.com/balashov87aleksandr/rf-core/
+    git: https://github.com/Balashoffs/3xball-calculator
 #  components_library:
 #    path: packages/components_library
 

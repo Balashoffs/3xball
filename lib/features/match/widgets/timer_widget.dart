@@ -16,7 +16,7 @@ class MatchTimerWidget extends StatelessWidget {
     Color timeColor = cubit.state.status == MatchStatus.ready
         ? brand2ColorBase
         : brandColorBase;
-    double fontSize = cubit.state.status == MatchStatus.selecting ? 64 : 96;
+    double fontSize = cubit.state.status == MatchStatus.selecting ? 96 : 96;
     return BlocBuilder<TimerCubit, TimerState>(
       builder: (context, state) {
         int duration = state.duration;
@@ -81,7 +81,7 @@ class _BlinkedTextState extends State<BlinkedText>
             opacity: _animationController.value,
             child: Text(
               widget.timerValue,
-              style: textStyleHeavy(color, 65),
+              style: textStyleHeavy(color, 96),
             ),
           ),
     );
