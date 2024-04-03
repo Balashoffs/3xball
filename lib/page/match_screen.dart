@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_audio/just_audio.dart';
@@ -71,8 +72,8 @@ class MatchBuilderWidget extends StatelessWidget {
                 SelectGoalAuthorWidget(),
               ],
             ),
-            MatchControllerWidget(),
-            MatchTimerWidget(),
+            Flexible(child: MatchControllerWidget()),
+            Flexible(child: MatchTimerWidget()),
             ContinueMatchButton(),
           ],
         ),

@@ -1,9 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:just_audio/just_audio.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:three_x_ball/core/service/sound_manager.dart';
+import 'package:three_x_ball/core/service/sounds_player.dart';
 import 'package:three_x_ball/mapper/player_mapper.dart';
 import 'package:three_x_ball/model/domain/domain.dart';
 import 'package:three_x_ball/repository/match_repository.dart';

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:three_x_ball/core/service/vibro_service.dart';
 import 'package:three_x_ball/core/utils/colors.dart';
 import 'package:three_x_ball/features/match/bloc/match_cubit.dart';
 import 'package:three_x_ball/features/match/bloc/timer_cubit.dart';
@@ -17,27 +18,22 @@ class MatchTimerWidget extends StatelessWidget {
         ? brand2ColorBase
         : brandColorBase;
     double fontSize = cubit.state.status == MatchStatus.selecting ? 96 : 96;
-    return BlocBuilder<TimerCubit, TimerState>(
-      builder: (context, state) {
-        int duration = state.duration;
-        if (duration == TimerCubit.secondToEndMatch) {
-          print('turn on vibrate');
-          Vibration.vibrate(
-              duration:
-              (3000));
-        }
-
-        String timer = toStringTimer(duration);
-        if (state.status == TimerStatus.pause || duration == 0) {
-          return BlinkedText(
-            timerValue: timer,
+    return Center(
+      child: BlocBuilder<TimerCubit, TimerState>(
+        builder: (context, state) {
+          int duration = state.duration;
+          String timer = toStringTimer(duration);
+          if (state.status == TimerStatus.pause || duration == 0) {
+            return BlinkedText(
+              timerValue: timer,
+            );
+          }
+          return Text(
+            timer,
+            style: textStyleHeavy(timeColor, fontSize),
           );
-        }
-        return Text(
-          timer,
-          style: textStyleHeavy(timeColor, fontSize),
-        );
-      },
+        },
+      ),
     );
   }
 }

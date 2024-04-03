@@ -44,10 +44,6 @@ class MatchCubit extends Cubit<MatchState> {
     }
   }
 
-  void onSelecting() {
-    emit(state.copyWith(status: MatchStatus.selecting));
-  }
-
   void onSelected(PlayerDM player) {
     GoalAuthor goalAuthor = player.toGoalAuthor();
     _matchRepository.addGoalAuthor(goalAuthor);
