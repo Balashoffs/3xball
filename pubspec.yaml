@@ -16,7 +16,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 # In Windows, build-name is used as the major, minor, and patch parts
 # of the product and file versions while build-number is used as the build suffix.
-version: 1.0.4
+version: 2.0.0
 
 environment:
   sdk: '>=3.0.2 <4.0.0'
@@ -52,7 +52,7 @@ dependencies:
   vibration: ^1.8.4
   auto_size_text: ^3.0.0
   rf_core:
-    git: https://gitlab.com/balashov87aleksandr/rf-core/
+    git: https://github.com/Balashoffs/3xball-calculator
 #  components_library:
 #    path: packages/components_library
 

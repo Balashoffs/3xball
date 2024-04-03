@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:three_x_ball/core/service/vibro_service.dart';
 import 'package:three_x_ball/core/utils/colors.dart';
 import 'package:three_x_ball/features/match/bloc/match_cubit.dart';
 import 'package:three_x_ball/features/match/bloc/timer_cubit.dart';
@@ -16,35 +17,23 @@ class MatchTimerWidget extends StatelessWidget {
     Color timeColor = cubit.state.status == MatchStatus.ready
         ? brand2ColorBase
         : brandColorBase;
-    double fontSize = cubit.state.status == MatchStatus.selecting ? 64 : 96;
-    return BlocBuilder<TimerCubit, TimerState>(
-      builder: (context, state) {
-        int duration = state.duration;
-        if (duration > TimerCubit.afterEnd) {
-          if (duration == TimerCubit.afterEnd + TimerCubit.beforeEnd) {
-            Vibration.vibrate(
-                duration:
-                (TimerCubit.beforeEnd * 1000 + 1000));
+    double fontSize = cubit.state.status == MatchStatus.selecting ? 96 : 96;
+    return Center(
+      child: BlocBuilder<TimerCubit, TimerState>(
+        builder: (context, state) {
+          int duration = state.duration;
+          String timer = toStringTimer(duration);
+          if (state.status == TimerStatus.pause || duration == 0) {
+            return BlinkedText(
+              timerValue: timer,
+            );
           }
-          duration = duration - TimerCubit.afterEnd;
-        }else{
-          if(duration == TimerCubit.afterEnd ){
-            context.read<MatchCubit>().onFinish();
-          }
-          duration = 0;
-        }
-
-        String timer = toStringTimer(duration);
-        if (state.status == TimerStatus.pause || duration == 0) {
-          return BlinkedText(
-            timerValue: timer,
+          return Text(
+            timer,
+            style: textStyleHeavy(timeColor, fontSize),
           );
-        }
-        return Text(
-          timer,
-          style: textStyleHeavy(timeColor, fontSize),
-        );
-      },
+        },
+      ),
     );
   }
 }
@@ -81,7 +70,7 @@ class _BlinkedTextState extends State<BlinkedText>
             opacity: _animationController.value,
             child: Text(
               widget.timerValue,
-              style: textStyleHeavy(color, 65),
+              style: textStyleHeavy(color, 96),
             ),
           ),
     );

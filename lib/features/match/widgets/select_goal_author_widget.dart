@@ -10,17 +10,7 @@ class SelectGoalAuthorWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final status = context.select((MatchCubit cubit) => cubit.state.status);
-    return status == MatchStatus.selecting
-        ? Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            ConfirmText(
-                buttonText: 'Выберите автора гола',
-                backgroundColor: managerHeadColor,
-              ),
-          ],
-        )
-        : status == MatchStatus.selected
+    return status == MatchStatus.selected
             ? Padding(
               padding: const EdgeInsets.all(8.0),
               child: ConfirmButton(

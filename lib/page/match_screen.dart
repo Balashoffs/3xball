@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_audio/just_audio.dart';
@@ -50,12 +51,6 @@ class MatchBuilderWidget extends StatelessWidget {
               .then((value) => Navigator.of(context).pop());
         }
         if (state.status == MatchStatus.finish) {
-          final player = AudioPlayer();
-          player.stop();
-          Vibration.vibrate(duration: 3000);
-          player.setLoopMode(LoopMode.off);
-          player.setAsset('assets/match/whistle.wav');
-          player.play();
           context.read<MatchCubit>().onClosed();
         }
       },
