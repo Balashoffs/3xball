@@ -37,7 +37,7 @@ void log(
   );
 }
 
-void main() {
+Future<void> main() async {
   final WidgetConfiguration widgetConfiguration = WidgetConfiguration(
     child: AppBuilder<void>(
       preInitialize: (WidgetsBinding binding) async {

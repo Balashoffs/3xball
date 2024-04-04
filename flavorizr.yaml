@@ -1,0 +1,14 @@
+flavors:
+  dev:
+    app:
+      name: "3xball demo"
+
+    android:
+      applicationId: "com.balashoff.three_x_ball.dev"
+
+  prod:
+    app:
+      name: "3xBall prod"
+
+    android:
+      applicationId: "com.balashoff.three_x_ball"
