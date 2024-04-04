@@ -1,11 +1,8 @@
 import 'dart:async';
 import 'dart:developer' as dev;
-import 'dart:ui';
-
 import 'package:app_runner/app_runner.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:three_x_ball/page/splash_screen.dart';
 import 'package:three_x_ball/repository/app_repository.dart';

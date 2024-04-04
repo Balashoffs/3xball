@@ -1,14 +1,16 @@
 flavors:
   dev:
     app:
-      name: "3xball demo"
+      name: "demo"
 
     android:
       applicationId: "com.balashoff.three_x_ball.dev"
+      icon: "logo/logo_dev.png"
 
   prod:
     app:
-      name: "3xBall prod"
+      name: "3xBall"
 
     android:
       applicationId: "com.balashoff.three_x_ball"
+      icon: "logo/logo_prod.png"

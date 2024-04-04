@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:just_audio/just_audio.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:three_x_ball/features/match/bloc/bloc.dart';
 
 class MatchControllerWidget extends StatefulWidget {
@@ -12,7 +12,6 @@ class MatchControllerWidget extends StatefulWidget {
 
 class _MatchControllerWidgetState extends State<MatchControllerWidget> {
   bool isPause = false;
-  final player = AudioPlayer();
 
   @override
   void initState() {
@@ -39,11 +38,11 @@ class _MatchControllerWidgetState extends State<MatchControllerWidget> {
           setState(() {});
         },
         child: isPause
-            ? Image.asset(
-          'assets/match/pause_button.png',
+            ? SvgPicture.asset(
+          'assets/match/pause_button.svg',
         )
-            : Image.asset(
-          'assets/match/play_button.png',
+            : SvgPicture.asset(
+          'assets/match/play_button.svg',
         ),
       ),
     );
@@ -51,7 +50,6 @@ class _MatchControllerWidgetState extends State<MatchControllerWidget> {
 
   @override
   void dispose() {
-    player.dispose();
     super.dispose();
   }
 }

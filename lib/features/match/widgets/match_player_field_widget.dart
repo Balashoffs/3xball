@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:three_x_ball/core/extensions/text_style_extension.dart';
 import 'package:three_x_ball/core/theme/app_typography.dart';
 import 'package:three_x_ball/features/match/bloc/bloc.dart';
 import 'package:three_x_ball/model/domain/domain.dart';
 import 'package:three_x_ball/core/utils/utils.dart';
-
+import 'package:flutter_svg_provider/flutter_svg_provider.dart' as SvgProvider;
 
 class MatchPlayersFieldWidget extends StatelessWidget {
   const MatchPlayersFieldWidget({super.key});
@@ -44,14 +45,14 @@ class MatchPlayersFieldWidget extends StatelessWidget {
             decoration: BoxDecoration(
               image: DecorationImage(
                 fit: BoxFit.fill,
-                image: const AssetImage('assets/match/players_field.png'),
+                image: const SvgProvider.Svg('assets/match/players_field.svg'),
                 opacity: opacity,
               ),
             ),
             child: Stack(
               alignment: AlignmentDirectional.center,
               children: [
-                Center(child: Image.asset('assets/match/ball_logo.png')),
+                Center(child: SvgPicture.asset('assets/match/ball_logo.svg')),
                 Row(
                   mainAxisSize: MainAxisSize.max,
                   // mainAxisAlignment: MainAxisAlignment.spaceBetween,

@@ -41,7 +41,7 @@ class TimerCubit extends Cubit<TimerState> {
   void paused() {
     if (state.status == TimerStatus.inProgress) {
       _tickerSubscription?.pause();
-      emit(state.copyWith(status: TimerStatus.pause));
+      emit(state.copyWith(status: TimerStatus.pause, isPause:  true));
     }
   }
 
@@ -49,7 +49,7 @@ class TimerCubit extends Cubit<TimerState> {
     if (state.status == TimerStatus.pause) {
       _tickerSubscription?.resume();
       emit(
-        state.copyWith(status: TimerStatus.inProgress),
+        state.copyWith(status: TimerStatus.inProgress, isPause: false),
       );
     }
   }
@@ -62,13 +62,14 @@ class TimerCubit extends Cubit<TimerState> {
       }
       emit(state.copyWith(status: TimerStatus.inProgress, duration: duration));
     } else {
-      _vibroService.execVibration();
+
       emit(state.copyWith(status: TimerStatus.complete, duration: duration));
     }
   }
 
   @override
   Future<void> close() {
+    _vibroService.execVibration();
     _tickerSubscription?.cancel();
     _tickerPlayer.stop();
     return super.close();

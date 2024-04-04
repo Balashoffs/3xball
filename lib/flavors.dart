@@ -13,7 +13,7 @@ class F {
       case Flavor.dev:
         return '3xball demo';
       case Flavor.prod:
-        return '3xBall prod';
+        return '3xBall';
       default:
         return 'title';
     }

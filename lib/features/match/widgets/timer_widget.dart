@@ -6,7 +6,6 @@ import 'package:three_x_ball/features/match/bloc/match_cubit.dart';
 import 'package:three_x_ball/features/match/bloc/timer_cubit.dart';
 import 'package:three_x_ball/core/utils/date_time.dart';
 import 'package:three_x_ball/core/utils/styles.dart';
-import 'package:vibration/vibration.dart';
 
 class MatchTimerWidget extends StatelessWidget {
   const MatchTimerWidget({super.key});
