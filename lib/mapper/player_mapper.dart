@@ -54,7 +54,6 @@ extension PlayerFromSP on PlayerSP {
       totalGames: totalGames,
       rate: rate,
       userAvatar: bytes,
-      userAvatarString: photoLink,
       birthday: birthday,
     );
   }

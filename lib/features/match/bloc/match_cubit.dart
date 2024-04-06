@@ -65,12 +65,6 @@ class MatchCubit extends Cubit<MatchState> {
     );
   }
 
-  void onFinish() async {
-    emit(state.copyWith(
-      status: MatchStatus.cancel,
-    ));
-  }
-
   void onClosed() async {
     _matchRepository.addGoalAuthor(null);
     emit(
@@ -85,11 +79,12 @@ class MatchCubit extends Cubit<MatchState> {
     _matchRepository.addGoalAuthor(null);
     emit(
       state.copyWith(
-        status: MatchStatus.end,
+        status: MatchStatus.cancel,
         playerPos: -1,
       ),
     );
   }
+
 
   void saveMatchResult() async {
     await SharedPreferences.getInstance().then((value) =>

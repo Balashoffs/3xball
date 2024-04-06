@@ -2,14 +2,15 @@ import 'dart:async';
 
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:three_x_ball/core/service/dart_define_object.dart';
 import 'package:three_x_ball/core/service/sounds_player.dart';
 import 'package:three_x_ball/core/service/vibro_service.dart';
 
 part 'timer_state.dart';
 
 class TimerCubit extends Cubit<TimerState> {
-  static const int secondToEndMatch = 30;
-  static const int totalSecondsPerMatch = 1 * 60;
+  static int secondToEndMatch = DartDefineObject().secondToEndMatch();
+  static int totalSecondsPerMatch =DartDefineObject().totalSecondsPerMatch();
 
   final VibroService _vibroService;
 
@@ -17,7 +18,7 @@ class TimerCubit extends Cubit<TimerState> {
       : _ticker = const Ticker(),
         _tickerPlayer = TickerPlayer(),
         _vibroService = VibroService(),
-        super(const TimerState(duration: totalSecondsPerMatch)) {
+        super( TimerState(duration: totalSecondsPerMatch)) {
     emit(
       state.copyWith(status: TimerStatus.idle),
     );

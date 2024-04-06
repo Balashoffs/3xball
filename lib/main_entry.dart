@@ -4,6 +4,7 @@ import 'package:app_runner/app_runner.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:three_x_ball/core/service/dart_define_object.dart';
 import 'package:three_x_ball/page/splash_screen.dart';
 import 'package:three_x_ball/repository/app_repository.dart';
 import 'package:three_x_ball/repository/app_store.dart';
@@ -34,7 +35,9 @@ void log(
   );
 }
 
-Future<void> main() async {
+typedef AppStoreFunc = AppStore Function();
+
+Future<void> entry(AppStoreFunc func) async {
   final WidgetConfiguration widgetConfiguration = WidgetConfiguration(
     child: AppBuilder<void>(
       preInitialize: (WidgetsBinding binding) async {
@@ -52,11 +55,11 @@ Future<void> main() async {
           case ConnectionState.active:
           case ConnectionState.waiting:
             child = CustomSplashScreen(
-              message: DartDefine.version,
+              message: DartDefineObject().version
             );
             continue display;
           case ConnectionState.done:
-            AppStore appStore = AppStore();
+            AppStore appStore = func();
             AppRepository appRepository = AppRepository(appStore: appStore);
             MatchRepository matchRepository =
                 MatchRepository(appRepository: appRepository);

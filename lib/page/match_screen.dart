@@ -50,9 +50,6 @@ class MatchBuilderWidget extends StatelessWidget {
               .then((value) => context.read<TimerCubit>().close())
               .then((value) => Navigator.of(context).pop());
         }
-        if (state.status == MatchStatus.finish) {
-          context.read<MatchCubit>().onClosed();
-        }
       },
       child: BlocListener<TimerCubit, TimerState>(
         listener: (context, state) {

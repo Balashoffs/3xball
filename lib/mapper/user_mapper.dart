@@ -16,7 +16,6 @@ extension UserToDomain on UserSP {
         userFirstName: userFirstName,
         userLastName: userLastName,
         birthday: birthday,
-        userAvatarString: photoLink,
         phoneNumber: phoneNumber);
   }
 

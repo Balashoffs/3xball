@@ -28,8 +28,6 @@ class AppRepository {
         _endTourneyStore = appStore.endTourneyStore,
         _playersStore = appStore.playersStore;
 
-
-
   ///Club store
   Future<void> createClub(ClubSP clubSP) async {
     _clubStore.create(clubSP);

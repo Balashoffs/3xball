@@ -17,7 +17,7 @@ class ContinueMatchButton extends StatelessWidget {
             child: ConfirmButton(
               buttonText: 'Продолжить матч',
               onTap: () {
-                context.read<MatchCubit>().onConfirm();
+                context.read<MatchCubit>().onCancel();
               },
               backgroundColor: brandColorBase,
             ),

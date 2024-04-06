@@ -35,4 +35,4 @@ class MatchState extends Equatable {
   }
 }
 
-enum MatchStatus { idle, ready, selecting, selected, goal, cancel, finish, end}
+enum MatchStatus { idle, ready, selecting, selected, goal, cancel, end}

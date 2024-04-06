@@ -42,12 +42,6 @@ class PlayersCubit extends Cubit<PlayersState> {
 
   Future<void> init() async {
     List<UserDM> players =  await repository.readLobbyPlayers();
-    if(players.isEmpty){
-      if (kDebugMode || kReleaseMode) {
-        players = await DevelopDataSet.getPlayers();
-        await repository.addLobbyPlayers(players);
-      }
-    }
 
     players.sort();
     PlayersLobbyState lobbyState = calc(players);

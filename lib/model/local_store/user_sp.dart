@@ -16,8 +16,6 @@ class UserSP {
   final String phoneNumber;
   @JsonKey(includeIfNull: false)
   final String photo64;
-  @JsonKey(includeIfNull: false)
-  final String photoLink;
 
   UserSP({
     required this.id,
@@ -26,7 +24,6 @@ class UserSP {
     required this.birthday,
     required this.phoneNumber,
     this.photo64 = '',
-    this.photoLink = '',
   });
 
   factory UserSP.fromJson(Map<String, dynamic> json) => _$UserSPFromJson(json);
@@ -39,6 +36,5 @@ class UserSP {
         userLastName = '',
         birthday = '',
         phoneNumber = '',
-        photoLink = '',
         photo64 = '';
 }

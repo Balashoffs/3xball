@@ -3,6 +3,7 @@ flavors:
     app:
       name: "demo"
 
+
     android:
       applicationId: "com.balashoff.three_x_ball.dev"
       icon: "logo/logo_dev.png"

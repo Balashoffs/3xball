@@ -13,7 +13,6 @@ UserSP _$UserSPFromJson(Map<String, dynamic> json) => UserSP(
       birthday: json['birthday'] as String,
       phoneNumber: json['phoneNumber'] as String,
       photo64: json['photo64'] as String? ?? '',
-      photoLink: json['photoLink'] as String? ?? '',
     );
 
 Map<String, dynamic> _$UserSPToJson(UserSP instance) => <String, dynamic>{
@@ -23,5 +22,4 @@ Map<String, dynamic> _$UserSPToJson(UserSP instance) => <String, dynamic>{
       'birthday': instance.birthday,
       'phoneNumber': instance.phoneNumber,
       'photo64': instance.photo64,
-      'photoLink': instance.photoLink,
     };
